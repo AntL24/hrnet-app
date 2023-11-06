@@ -12,7 +12,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 1
     },
     {
         firstName: "Jane",
@@ -23,7 +24,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 2
     },
     {
         firstName: "John",
@@ -34,7 +36,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 3
     },
     {
         firstName: "Jane",
@@ -45,7 +48,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 4
     },
     {
         firstName: "John",
@@ -56,7 +60,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 5
     },
     {
         firstName: "John",
@@ -67,7 +72,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 6
     },
     {
         firstName: "Jane",
@@ -78,7 +84,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 7
     },
     {
         firstName: "John",
@@ -89,7 +96,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 8
     },
     {
         firstName: "Jane",
@@ -100,7 +108,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 9
     },
     {
         firstName: "John",
@@ -111,7 +120,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 10
     },
     {
         firstName: "John",
@@ -122,7 +132,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id:11
     },
     {
         firstName: "Jane",
@@ -133,7 +144,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 12
     },
     {
         firstName: "John",
@@ -144,7 +156,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 13
     },
     {
         firstName: "Jane",
@@ -155,7 +168,8 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id: 14
     },
     {
         firstName: "John",
@@ -166,63 +180,10 @@ const fakedata = [
         city: "Anytown",
         state: "CA",
         zipCode: "12345",
-        department: "Engineering"
-    },
-    {
-        firstName: "John",
-        lastName: "Doe",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 egergererg St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering"
-    },
-    {
-        firstName: "Jane",
-        lastName: "Doergererge",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering"
-    },
-    {
-        firstName: "John",
-        lastName: "Smith",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering"
-    },
-    {
-        firstName: "Jane",
-        lastName: "Smith",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering"
-    },
-    {
-        firstName: "John",
-        lastName: "Jones",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering"
+        department: "Engineering",
+        id : 15
     }
+   
 ];
 
 export const EmployeeProvider = ({ children }) => {

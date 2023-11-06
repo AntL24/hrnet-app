@@ -30,7 +30,6 @@ function Home() {
 
             <div className="content">
                 <EmployeeList onEmployeeClick={handleEmployeeClick} openModal={openModal} />
-                <EmployeeDetails employee={selectedEmployee} />
             </div>
 
             <Modal
