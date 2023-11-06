@@ -12,55 +12,82 @@ function ReactDataTable({
     sortOption = 'default'
 }) {
     const [searchTerm, setSearchTerm] = useState('');
-    const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
     const [searchColumn, setSearchColumn] = useState('all');
     const [currentPage, setCurrentPage] = useState(1);
     const [entriesPerPage, setEntriesPerPage] = useState(defaultEntriesPerPage);
-    const [sortColumns, setSortColumns] = useState([{ key: sortColumn, direction: 'asc' }]);
+    const [sortColumns, setSortColumns] = useState([{ key: sortColumn, direction: 'neutral' }]);
     const [visibleColumns, setVisibleColumns] = useState(columns.map(col => col.key));
     const [isDropdownOpen, setDropdownOpen] = useState(false);
 
+    // Optimized Levenshtein distance algorithm to find similar strings
+    const levenshteinDistance = (s, t, limit = Infinity) => {
+        {
+            let d = []; // 2d matrix
 
-    //Debounce search term
-    useEffect(() => {
-        const timerId = setTimeout(() => {
-            setDebouncedSearchTerm(searchTerm);
-        }, 300);
-        return () => {
-            clearTimeout(timerId);
-        };
-    }, [searchTerm]);
+            // Early exit checks
+            var n = s.length;
 
-    //Levenshtein distance algorithm to find similar strings
-    const levenshteinDistance = (string1, string2) => {
-        let distanceMatrix = [];
-        for (let i = 0; i <= string1.length; i++) {
-            distanceMatrix[i] = [i];
-        }
-        for (let j = 0; j <= string2.length; j++) {
-            distanceMatrix[0][j] = j;
-        }
-        for (let i = 1; i <= string1.length; i++) {
-            for (let j = 1; j <= string2.length; j++) {
-                if (string1[i - 1] === string2[j - 1]) {
-                    distanceMatrix[i][j] = distanceMatrix[i - 1][j - 1];
-                } else {
-                    distanceMatrix[i][j] = Math.min(
-                        distanceMatrix[i - 1][j - 1] + 1,
-                        distanceMatrix[i][j - 1] + 1,
-                        distanceMatrix[i - 1][j] + 1
-                    );
+            var m = t.length;
+
+            if (n === 0) return m;
+
+            if (m === 0) return n;
+
+            if (Math.abs(n - m) > limit) return limit + 1; //This line is added to the original algorithm, it allows to stop the algorithm if the difference between the two strings is too big
+
+            // Initialize arrays
+            for (let i = n; i >= 0; i--) d[i] = [];
+
+            // Step 2, initialize cost of skipping prefix in String s to i.
+            for (let i = n; i >= 0; i--) d[i][0] = i;
+            for (let j = m; j >= 0; j--) d[0][j] = j;
+
+            // Compute the Levenshtein distance
+            for (let i = 1; i <= n; i++) {
+                {
+                    let s_i = s.charAt(i - 1);
+                    for (let j = 1; j <= m; j++) {
+                        {
+
+                            // Early exit check for large distances
+                            if (i === j && d[i][j] > limit) return n;
+
+                            let t_j = t.charAt(j - 1);
+                            let cost = (s_i === t_j) ? 0 : 1;
+
+                            // Calculate the minimum
+                            let mi = d[i - 1][j] + 1;
+                            let b = d[i][j - 1] + 1;
+                            let c = d[i - 1][j - 1] + cost;
+
+                            if (b < mi) mi = b;
+                            if (c < mi) mi = c;
+
+                            d[i][j] = mi;
+
+
+
+                            // Damerau transposition check and update
+                            if (i > 1 && j > 1 && s_i === t.charAt(j - 2) && s.charAt(i - 2) === t_j) {
+                                {
+                                    d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + cost);
+                                }
+                            }
+                        }
+                    }
                 }
             }
+            // Return the calculated distance
+            return d[n][m];
         }
-        return distanceMatrix[string1.length][string2.length];
-    }
+    };
+
 
     //Search function
     const search = (name, items) => {
         const results = new Set();
         const searchTerms = name.toLowerCase().split(/\s+/);
-    
+
         items.forEach(item => {
             let concatenatedData = '';
             columns.forEach(column => {
@@ -68,9 +95,9 @@ function ReactDataTable({
                     concatenatedData += ' ' + String(item[column.key]).toLowerCase();
                 }
             });
-    
+
             const dataSegments = concatenatedData.split(/\s+/);
-    
+
             let allTermsFound = true;
             for (let term of searchTerms) {
                 let termFound = false;
@@ -85,29 +112,31 @@ function ReactDataTable({
                     break;
                 }
             }
-    
+
             if (allTermsFound) {
                 results.add(item);
             }
         });
-    
+
         return Array.from(results);
     }
-    
+
 
     //Filter data based on search term
     const filteredData = useMemo(() => {
-        if (!debouncedSearchTerm) return data;
-        return search(debouncedSearchTerm, data);
-    }, [debouncedSearchTerm, data, searchColumn]);
+        if (!searchTerm) return data;
+        return search(searchTerm, data);
+    }, [searchTerm, data, searchColumn]);
 
     //Sort data on individual columns
     const sortedData = useMemo(() => {
         let array = [...filteredData];
         if (sortColumns.length === 0) return array;
-        //Multicolumnn sorting to sort data based on multiple columns
+        // Multicolumn sorting to sort data based on multiple columns
         return array.sort((a, b) => {
             for (let sort of sortColumns) {
+                if (sort.direction === 'neutral') continue;
+
                 let result = sort.direction === 'asc'
                     ? String(a[sort.key]).localeCompare(String(b[sort.key]))
                     : String(b[sort.key]).localeCompare(String(a[sort.key]));
@@ -116,6 +145,7 @@ function ReactDataTable({
             return 0;
         });
     }, [filteredData, sortColumns]);
+
 
     //When header is clicked, sort data based on column whose header was clicked
     const handleHeaderClick = (columnKey) => {

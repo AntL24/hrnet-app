@@ -68,7 +68,7 @@ label {
     width : 100%;
     padding: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
 }
 

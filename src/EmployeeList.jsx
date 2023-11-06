@@ -37,6 +37,7 @@ function EmployeeList({ openModal }) {
                 />
             </div>
             {selectedEmployee && <EmployeeDetails employee={selectedEmployee} />}
+            {!selectedEmployee && <EmployeeDetails />}
         </div>
     );
 }
