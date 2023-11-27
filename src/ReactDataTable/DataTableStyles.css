@@ -11,9 +11,11 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #ccc;
+    border: none;
 }
-
+th{
+    border:none;
+}
 table td {
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -22,7 +24,6 @@ table td {
 .tablecontent{
     width: 100%;
     border-collapse: collapse;
-    /* overflow-y: scroll; */
 }
 th, td {
     padding: 8px 12px;
@@ -30,7 +31,7 @@ th, td {
 }
 thead{
     position: sticky;
-    top: 0; 
+    top: 0;
     z-index: 10;
 }
 th {
@@ -53,11 +54,10 @@ tbody tr:hover {
 }
 
 input[type="text"] {
-    padding: 8px;
+    padding: 5px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-left: 10px;
 }
 
 select {
@@ -68,8 +68,16 @@ select {
     margin-left: 10px;
 }
 
+select:hover {
+    cursor: pointer;
+}
+
 .search{
     margin-left: 10px;
+}
+
+#startDate, #dateOfBirth:hover {
+    cursor: pointer;
 }
 
 .pagination{
@@ -77,37 +85,37 @@ select {
     margin-top: 20px;
 }
 
+
 .employee-list, .employee-details, .employee-info {
     padding: 10px;
     box-sizing: border-box;
 }
 
 .datatable-container{
-    height: 350px;
+    height: 100%;
 }
 .datatable-table-overflow-container {
     overflow-y: scroll;
-    /* width: 1000px; */
-    height: 350px;
 }
 
 .datatable-header{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
 }
 
 .datatable-header > label{
     margin-right: 10px;
-    padding-bottom: 20px;
-    margin-bottom: 0;
+    margin-bottom: 20px;
 }
 .dropdown > label {
      margin-right: 10px;
-    padding-bottom: 20px;
-    margin-bottom: 0;
+   
 }
 
-/* Styles pour les indicateurs visuels de tri */
+
+
 .sort-indicator {
     display: inline-block;
     vertical-align: middle;
@@ -126,7 +134,9 @@ select {
 
 .dropdown {
     position: relative;
-    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 15px; 
+   
 }
 
 .dropdown-content {
@@ -153,38 +163,59 @@ select {
     display: block;
 }
 
-/* Style pour le bouton "Visible Columns" */
 .dropdown > label {
-    background-color: #eee;
-    padding: 6px 12px;
-    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    background-color: #eee;
+    padding: 6px;
+    border-radius: 4px;
 }
 
 .dropdown > label:hover {
     background-color: #ddd;
 }
 
-/* Icône de flèche vers le bas pour le label */
 .dropdown > label::after {
     content: "⌵";
     margin-left: 5px;
 }
 
-/* Stylisation des checkbox */
 .dropdown-content input[type="checkbox"] {
     margin-right: 10px;
-    transform: scale(1.2); /* Agrandit un peu la checkbox */
+    transform: scale(1.2); 
     cursor: pointer;
 
 }
 
-/* Espace entre les éléments de la dropdown-content */
 .dropdown-content div {
     margin: 8px 0;
     padding: 4px 8px;
     cursor: pointer;
-
 }
 
+.search-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+label .search-input {
+    padding: 5px 5px 5px 30px; 
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 5px; 
+    height: 20px; 
+}
+
+
+.search-label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

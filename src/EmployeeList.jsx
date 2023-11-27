@@ -26,14 +26,20 @@ function EmployeeList({ openModal }) {
     return (
         <div className="container">
             <div className='employee-list-container'>
-                <h2>Current Employees</h2>
-                <ReactDataTable 
+                <div className='title'>
+                    <h2>Current Employees</h2>
+                </div>
+                <ReactDataTable
                     data={employees}
                     columns={columns}
                     onRowClick={handleRowClick}
                     openModal={openModal}
                     defaultEntriesPerPage={10}
                     sortColumn="firstName"
+                    headerHeight= "3rem"
+                    tableBodyHeight= "20rem"
+                    paginationHeight= "3rem"
+                    fontFamily="'Roboto', sans-serif"
                 />
             </div>
             {selectedEmployee && <EmployeeDetails employee={selectedEmployee} />}
