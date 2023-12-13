@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import EmployeeDetails from './EmployeeDetails';
+import ListIcon from '/src/assets/readme.svg';
 import { useEmployees } from './EmployeeContext';
-import ReactDataTable from './ReactDataTable/ReactDataTable';
+import { ReactDataTable } from 'quite-simple-reactdatatable';
 
-function EmployeeList({ openModal }) {
+function EmployeeList() {
     const { employees } = useEmployees();
     const [selectedEmployee, setSelectedEmployee] = useState(null);
 
@@ -27,18 +28,17 @@ function EmployeeList({ openModal }) {
         <div className="container">
             <div className='employee-list-container'>
                 <div className='title'>
+                    <img src={ListIcon} alt="List Icon" className="list-icon" />
                     <h2>Current Employees</h2>
                 </div>
                 <ReactDataTable
                     data={employees}
                     columns={columns}
                     onRowClick={handleRowClick}
-                    openModal={openModal}
                     defaultEntriesPerPage={10}
-                    sortColumn="firstName"
-                    headerHeight= "3rem"
-                    tableBodyHeight= "20rem"
-                    paginationHeight= "3rem"
+                    headerHeight="3rem"
+                    tableBodyHeight="20rem"
+                    paginationHeight="3rem"
                     fontFamily="'Roboto', sans-serif"
                 />
             </div>

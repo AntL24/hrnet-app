@@ -1,9 +1,17 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     display:block;
     width:100%;
+    margin:0;
     color: #333;
     background-color: #ffffff;
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
 }
 
 #root{
@@ -38,13 +46,13 @@ h2 {
 
 .employee-list-container h2{
     margin-bottom: 2rem;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
 }
 .title{
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
 }
 
 
@@ -68,6 +76,19 @@ button:hover {
     color: #333;
     border: #333 solid 1px;
 }
+
+.error-message {
+    height: 20px; /* ou la hauteur appropriée pour vos messages d'erreur */
+    color: red;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    visibility: hidden;
+}
+
+.error-message.active {
+    visibility: visible;
+}
+
 
 .create-button {
     margin-left: 40px;
@@ -109,15 +130,15 @@ label {
 .employee-details h3 {
     font-size: 1.5em;
     margin-bottom:2rem;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
 }
 
 .title h3{
     font-size: 1.5em;
     margin-bottom:2rem;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
     padding: 0 0 0 10px;
 
 }
@@ -126,26 +147,34 @@ label {
     height: 3rem;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1rem;
 }
 
 .employee-details {
     display: flex;
     align-items: center;
     flex-direction: column;
-    border-left: 1px solid #eee;
     margin-left: 1rem;
+    margin-bottom: 2rem;
     padding: 0 0 0 1rem;
     height: 23rem;
+
+    /* border: 1px solid #898989;
+    border-radius: 10px; */
 }
 
 .employee-details-selected {
-    display: flex;
-    flex-direction: column;
-    border-left: 1px solid #eee;
+    
     margin-left: 1rem;
+    margin-bottom: 2rem;
     padding: 0 0 0 1rem;
     height: 23rem;
+
+    border: 1px solid #eee;
+    border-radius: 10px;
 }
+
+
 
 .hidden {
     display: none;
@@ -238,11 +267,20 @@ label {
 
 .add{
     margin-right:0.4rem;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 .add-icon {
     width: 20px;
     height: 20px; 
     margin-right: 8px; 
+}
+.add-icon-form{
+    width: 1.5rem;
+    height: 1.5rem; 
+    margin-right: 0.5rem; 
+    margin-top: 1.55rem;
+
 }
 .content {
     width: 100%;
@@ -377,4 +415,14 @@ input, select {
     background-position: right 0.5rem center;  
     background-size: 1.5rem;  
     padding-right: 2rem;  
+}
+.list-icon{
+    margin-top: 1.65rem;
+    margin-right: 0.5rem;
+    height: 1.5rem;
+}
+.manage-icon{
+    height:1.5rem;
+    margin-top:1.85rem;
+    margin-right: -0.4rem;
 }

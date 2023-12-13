@@ -1,20 +1,32 @@
 import React from 'react';
+import ManageIcon from '/src/assets/manage-icon.svg';
+import dataOperations from './EmployeeService';
+import { useContext } from 'react';
+import { EmployeeContext } from './EmployeeContext';
 
 function EmployeeDetails({ employee }) {
+    const { employees, setEmployees } = useContext(EmployeeContext);
+
     function editEmployee() {
-        //TO DO LATER
         console.warn("Edit functionality not yet implemented!");
     }
 
-    function deleteEmployee() {
-        //TO DO LATER
-        console.warn("Delete functionality not yet implemented!");
-    }
+    const deleteEmployee = async () => {
+        if (window.confirm(`Are you sure you want to delete ${employee.firstName} ${employee.lastName}?`)) {
+            try {
+                await dataOperations.deleteEmployee(employee.id);
+                setEmployees(prevEmployees => prevEmployees.filter(e => e.id !== employee.id));
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    };
 
     if (!employee) {
         return (
             <div className="employee-info">
                 <div className='title'>
+                    <img src={ManageIcon} alt="Manage Icon" className="manage-icon" />
                     <h3>Manage employee</h3>
                 </div>
                 <div className="employee-details">
@@ -33,6 +45,7 @@ function EmployeeDetails({ employee }) {
     return (
         <div className="employee-info">
             <div className='title'>
+                <img src={ManageIcon} alt="Manage Icon" className="manage-icon" />
                 <h3>Manage employee</h3>
             </div>
             <div className="employee-details-selected">

@@ -9,7 +9,7 @@ const SearchEmployeePage = () => {
         setSelectedEmployee(employee);
     };
     return (
-                <EmployeeList onEmployeeClick={handleEmployeeClick} />
+        <EmployeeList onEmployeeClick={handleEmployeeClick} />
     );
 };
 

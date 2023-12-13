@@ -1,194 +1,28 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import dataOperations from './EmployeeService';
+export const EmployeeContext = createContext();
 
-const EmployeeContext = createContext();
-
-const fakedata = [
-    {
-        firstName: "John",
-        lastName: "Doe",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 1
-    },
-    {
-        firstName: "Jane",
-        lastName: "Doe",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 2
-    },
-    {
-        firstName: "John",
-        lastName: "Smith",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 3
-    },
-    {
-        firstName: "Jane",
-        lastName: "Smith",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 4
-    },
-    {
-        firstName: "John",
-        lastName: "Jones",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 5
-    },
-    {
-        firstName: "John",
-        lastName: "Doe",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 6
-    },
-    {
-        firstName: "Jane",
-        lastName: "Doe",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 7
-    },
-    {
-        firstName: "John",
-        lastName: "Smith",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 8
-    },
-    {
-        firstName: "Jane",
-        lastName: "Smith",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 9
-    },
-    {
-        firstName: "John",
-        lastName: "Jones",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 10
-    },
-    {
-        firstName: "John",
-        lastName: "Doe",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id:11
-    },
-    {
-        firstName: "Jane",
-        lastName: "Doe",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 12
-    },
-    {
-        firstName: "John",
-        lastName: "Smith",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 13
-    },
-    {
-        firstName: "Jane",
-        lastName: "Smith",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id: 14
-    },
-    {
-        firstName: "John",
-        lastName: "Jones",
-        dateOfBirth: "1990-01-01",
-        startDate: "2020-01-01",
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zipCode: "12345",
-        department: "Engineering",
-        id : 15
-    }
-   
-];
-
+//Context is used to manage state across components without having to pass props down through every component in the tree.
 export const EmployeeProvider = ({ children }) => {
-    const [employees, setEmployees] = useState(fakedata);
+    const [employees, setEmployees] = useState([]);
 
+    useEffect(() => {
+        const loadEmployees = async () => {
+            const employeesData = await dataOperations.fetchEmployees();
+            // Converts the object into an array to be used by the react table package
+            if (typeof employeesData === 'object' && employeesData !== null) {
+                const employeesArray = Object.keys(employeesData).map(key => ({
+                    id: key,
+                    ...employeesData[key]
+                }));
+                setEmployees(employeesArray);
+            } else {
+                setEmployees(employeesData);
+            }
+        };
+        loadEmployees();
+    }, []);
+    
 
     return (
         <EmployeeContext.Provider value={{ employees, setEmployees }}>
@@ -196,7 +30,6 @@ export const EmployeeProvider = ({ children }) => {
         </EmployeeContext.Provider>
     );
 };
-
 
 export const useEmployees = () => {
     const context = useContext(EmployeeContext);
