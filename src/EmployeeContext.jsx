@@ -23,6 +23,7 @@ export const EmployeeProvider = ({ children }) => {
                 }));
                 setEmployees(employeesArray);
             } else {
+                // Employee data already in array format              
                 setEmployees(employeesData);
             }
         };

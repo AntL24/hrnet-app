@@ -82,7 +82,6 @@ button:hover {
 
 .error-message {
     height: 20px;
-    /* ou la hauteur appropriée pour vos messages d'erreur */
     color: red;
     margin-top: 5px;
     font-size: 0.8rem;
@@ -134,15 +133,13 @@ label {
 .employee-details h3 {
     font-size: 1.5em;
     margin-bottom: 2rem;
-    /* margin-left: auto;
-    margin-right: auto; */
+   
 }
 
 .title h3 {
     font-size: 1.5em;
     margin-bottom: 2rem;
-    /* margin-left: auto;
-    margin-right: auto; */
+    
     padding: 0 0 0 10px;
 
 }
@@ -163,8 +160,6 @@ label {
     padding: 0 0 0 1rem;
     height: 23rem;
 
-    /* border: 1px solid #898989;
-    border-radius: 10px; */
 }
 
 .employee-details-selected {

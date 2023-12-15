@@ -4,6 +4,9 @@ import dataOperations from './services/EmployeeService';
 import { useContext } from 'react';
 import { EmployeeContext } from './EmployeeContext';
 
+//This component displays the details of the selected employee
+//Allows the user to edit or delete the employee with the dataOperations methods
+
 function EmployeeDetails({ employee }) {
     const { employees, setEmployees } = useContext(EmployeeContext);
 
