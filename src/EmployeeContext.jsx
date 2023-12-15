@@ -1,11 +1,17 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import dataOperations from './services/EmployeeService';
-export const EmployeeContext = createContext();
+
+//Both EmployeeContext and useEmployees are used in this project to manage state, for training purposes.
+//It would be better to be consistent and use one or the other, in a real project.
 
 //Context is used to manage state across components without having to pass props down through every component in the tree.
+export const EmployeeContext = createContext();
+
+//The provider component is used to wrap the components that need access to the context
 export const EmployeeProvider = ({ children }) => {
     const [employees, setEmployees] = useState([]);
 
+    //Fetches employees from the database on component mount
     useEffect(() => {
         const loadEmployees = async () => {
             const employeesData = await dataOperations.fetchEmployees();
@@ -31,6 +37,7 @@ export const EmployeeProvider = ({ children }) => {
     );
 };
 
+//Custom hook to use the context in other components
 export const useEmployees = () => {
     const context = useContext(EmployeeContext);
     if (context === undefined) {

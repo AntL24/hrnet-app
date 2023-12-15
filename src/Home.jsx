@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import EmployeeList from './EmployeeList';
 import Logo from '/src/assets/Logo_Hrnet.svg';
 
+//Default homepage.
+//Contains the employee list component, in the same way the old homepage did.
 function Home() {
-    const [selectedEmployee, setSelectedEmployee] = useState(null);
-
     return (
         <div className="home-container">
             <div className="header">

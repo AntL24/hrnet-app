@@ -3,7 +3,7 @@ import EmployeeForm from '../EmployeeForm';
 
 const CreateEmployeePage = () => {
     return (
-            <EmployeeForm />
+        <EmployeeForm />
     );
 };
 
