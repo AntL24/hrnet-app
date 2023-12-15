@@ -1,5 +1,5 @@
-import { ref, set, get, update, remove, push, child, getDatabase } from "firebase/database";
-import app from './firebaseConfig';
+import { ref, set, get, update, remove, push, getDatabase } from "firebase/database";
+import app from '../firebaseConfig';
 
 // Mock data for testing purposes
 const mockData = [
@@ -192,7 +192,7 @@ const database = getDatabase(app);
 // and updating your own .env file accordingly.
 const useMock = import.meta.env.VITE_USE_MOCK === 'true';
 
-// Implement methods to fetch, create, update, and delete employees
+// Fetch, create, update, and delete employees with Firebase
 const firebaseOperations = {
     fetchEmployees: async () => {
         const dbRef = ref(database, 'employees');

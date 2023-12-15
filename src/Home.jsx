@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 import EmployeeList from './EmployeeList';
-import EmployeeDetails from './EmployeeDetails';
-import EmployeeForm from './EmployeeForm';
 import Logo from '/src/assets/Logo_Hrnet.svg';
 
 function Home() {
     const [selectedEmployee, setSelectedEmployee] = useState(null);
-
-    const handleEmployeeClick = (employee) => {
-        setSelectedEmployee(employee);
-    };
 
     return (
         <div className="home-container">
@@ -22,7 +16,7 @@ function Home() {
             </div>
 
             <div className="content">
-                <EmployeeList onEmployeeClick={handleEmployeeClick} openModal={openModal} />
+                <EmployeeList />
             </div>
 
         </div>

@@ -1,12 +1,14 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 body {
     font-family: 'Arial', sans-serif;
-    display:block;
-    width:100%;
-    margin:0;
+    display: block;
+    width: 100%;
+    margin: 0;
     color: #333;
     background-color: #ffffff;
     min-height: 100vh;
@@ -14,7 +16,7 @@ body {
     line-height: 1.5;
 }
 
-#root{
+#root {
     padding: 0 2rem;
 }
 
@@ -22,7 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width:100%;
+    width: 100%;
 }
 
 .header {
@@ -44,12 +46,13 @@ h2 {
     color: #333;
 }
 
-.employee-list-container h2{
+.employee-list-container h2 {
     margin-bottom: 2rem;
     /* margin-left: auto;
     margin-right: auto; */
 }
-.title{
+
+.title {
     display: flex;
     justify-content: center;
     /* margin-bottom: 2rem; */
@@ -58,7 +61,7 @@ h2 {
 
 button {
     background-color: #333;
-    color:#ffffff;
+    color: #ffffff;
     border: transparent solid 1px;
     padding: 10px 20px;
     text-align: center;
@@ -78,7 +81,8 @@ button:hover {
 }
 
 .error-message {
-    height: 20px; /* ou la hauteur appropriée pour vos messages d'erreur */
+    height: 20px;
+    /* ou la hauteur appropriée pour vos messages d'erreur */
     color: red;
     margin-top: 5px;
     font-size: 0.8rem;
@@ -123,20 +127,20 @@ label {
 .employee-list-container {
     display: flex;
     flex-direction: column;
-    width:65%;
-    padding:1rem;
+    width: 65%;
+    padding: 1rem;
 }
 
 .employee-details h3 {
     font-size: 1.5em;
-    margin-bottom:2rem;
+    margin-bottom: 2rem;
     /* margin-left: auto;
     margin-right: auto; */
 }
 
-.title h3{
+.title h3 {
     font-size: 1.5em;
-    margin-bottom:2rem;
+    margin-bottom: 2rem;
     /* margin-left: auto;
     margin-right: auto; */
     padding: 0 0 0 10px;
@@ -164,7 +168,7 @@ label {
 }
 
 .employee-details-selected {
-    
+
     margin-left: 1rem;
     margin-bottom: 2rem;
     padding: 0 0 0 1rem;
@@ -206,17 +210,17 @@ label {
     border: 1px solid #eee;
 }
 
-.form-supergroup{
-    display:flex;
+.form-supergroup {
+    display: flex;
     flex-direction: row;
 }
 
 .employee-info {
     padding: 0 0 0 10px;
-    display:flex;
+    display: flex;
     flex-direction: column;
-    width:35%;
-    padding:1rem;
+    width: 35%;
+    padding: 1rem;
 }
 
 .navigation-button {
@@ -226,36 +230,36 @@ label {
     display: flex;
     align-items: center;
     margin-left: auto;
-    margin-right: 2rem;   
+    margin-right: 2rem;
 }
 
 .link-button {
-    font-size: 16px; 
+    font-size: 16px;
     font-weight: normal;
-    border: none; 
-    padding: 10px; 
-    text-decoration: none; 
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center; 
-    transition: color 0.3s; 
+    border: none;
+    padding: 10px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
     border-radius: 4px;
     background-color: #333;
     color: #ffffff;
     border: transparent solid 1px;
 }
 
-.link-button:hover{
-    color: #555; 
-    text-decoration: none; 
+.link-button:hover {
+    color: #555;
+    text-decoration: none;
 
     background-color: #ffffff;
     color: #333;
     border: #333 solid 1px;
 }
 
-.symbol{
-    color:rgb(255, 255, 255);
+.symbol {
+    color: rgb(255, 255, 255);
     font-size: 1.5rem;
     height: 1.5rem;
     filter: invert(100%);
@@ -265,23 +269,26 @@ label {
     filter: brightness(0) saturate(100%) invert(27%) sepia(7%) saturate(2292%) hue-rotate(182deg) brightness(93%) contrast(88%);
 }
 
-.add{
-    margin-right:0.4rem;
+.add {
+    margin-right: 0.4rem;
     width: 1.5rem;
     height: 1.5rem;
 }
+
 .add-icon {
     width: 20px;
-    height: 20px; 
-    margin-right: 8px; 
+    height: 20px;
+    margin-right: 8px;
 }
-.add-icon-form{
+
+.add-icon-form {
     width: 1.5rem;
-    height: 1.5rem; 
-    margin-right: 0.5rem; 
+    height: 1.5rem;
+    margin-right: 0.5rem;
     margin-top: 1.55rem;
 
 }
+
 .content {
     width: 100%;
     display: flex;
@@ -296,14 +303,14 @@ label {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center; 
-    max-width: 800px; 
+    align-items: center;
+    max-width: 800px;
     margin: auto;
 }
 
 .form-group {
-    width: calc(50% - 20px); 
-    margin: 10px; 
+    width: calc(50% - 20px);
+    margin: 10px;
 }
 
 .form-group label {
@@ -312,17 +319,17 @@ label {
 
 .form-group input[type="text"],
 .form-group input[type="date"] {
-    width: 100%; 
+    width: 100%;
     padding: 0.5rem;
     border-radius: 4px;
     border: 1px solid #ccc;
 }
 
 button {
-    padding: 0.5rem 1rem; 
-    width: auto; 
-    min-width: 120px; 
-    height: auto; 
+    padding: 0.5rem 1rem;
+    width: auto;
+    min-width: 120px;
+    height: auto;
 }
 
 @media (orientation: landscape) {
@@ -333,45 +340,45 @@ button {
 
 @media (orientation: portrait) {
     .form-group {
-        width: 100%; 
+        width: 100%;
     }
 }
 
 .address-group {
-    display:flex;
+    display: flex;
     border: 1px solid #ccc;
     padding: 10px;
-    position: relative; 
-    margin-top: 20px; 
+    position: relative;
+    margin-top: 20px;
     border-radius: 4px;
     width: calc(100% - 20px);
 }
 
 .address-title {
     position: absolute;
-    top: -14px; 
+    top: -14px;
     left: 50%;
-    transform: translateX(-50%); 
-    background: #ffffff; 
-    padding: 0 5px; 
-    border:none; 
+    transform: translateX(-50%);
+    background: #ffffff;
+    padding: 0 5px;
+    border: none;
 }
 
-.button-container{
-    width:100%;
-    display:flex;
+.button-container {
+    width: 100%;
+    display: flex;
     justify-content: center;
     margin-top: 0.75rem;
 }
 
-.form-group-department-container{
+.form-group-department-container {
     width: 100%;
     margin: 10px;
-    display:flex;
+    display: flex;
     justify-content: center;
 }
 
-.form-group-department{
+.form-group-department {
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -379,50 +386,61 @@ button {
     align-items: center;
 }
 
-.department-label{
+.department-label {
     font-weight: bold;
 }
 
-.add-icon{
+.add-icon {
     position: absolute;
     left: 5px;
     height: 20px;
 }
 
-input, select {
+input,
+select {
     -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .form-group input[type="text"],
 .form-group input[type="date"],
-.form-group select {  
-    width: 100%;  
-    padding: 0.5rem;  
-    border-radius: 4px; 
-    border: 1px solid #ccc; 
-    font-family: inherit;  
-    font-size: inherit; 
-    -webkit-appearance: none; 
-    -moz-appearance: none; 
-    appearance: none;  
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .form-group select {
-    background-image: url('assets/Carret_Down.svg'); 
+    background-image: url('assets/Carret_Down.svg');
     background-repeat: no-repeat;
-    background-position: right 0.5rem center;  
-    background-size: 1.5rem;  
-    padding-right: 2rem;  
+    background-position: right 0.5rem center;
+    background-size: 1.5rem;
+    padding-right: 2rem;
 }
-.list-icon{
+
+.list-icon {
     margin-top: 1.65rem;
     margin-right: 0.5rem;
     height: 1.5rem;
 }
-.manage-icon{
-    height:1.5rem;
-    margin-top:1.85rem;
+
+.manage-icon {
+    height: 1.5rem;
+    margin-top: 1.85rem;
     margin-right: -0.4rem;
+}
+
+input {
+    cursor: text;
+}
+
+input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
 }

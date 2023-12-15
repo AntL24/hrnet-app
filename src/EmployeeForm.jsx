@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useEmployees } from './EmployeeContext';
-import dataOperations from './EmployeeService';
+import dataOperations from './services/EmployeeService';
 import AddIcon from '/src/assets/add-icon.svg';
 
 function EmployeeForm() {
@@ -16,8 +16,13 @@ function EmployeeForm() {
         department: ""
     });
 
+    //Used by the validate function to store error messages for each field in the form
+    //Messages are then displayed to the user if the form is not filled out correctly
     const [errors, setErrors] = useState({});
 
+    //Validate stocks the errors object with error messages if the form is not filled out correctly
+    //On the contrary, if the form is filled out correctly, the errors object is empty and validate returns true
+    //Is used in the saveEmployee function to determine if the new employee object should be sent to the database
     const validate = () => {
         let tempErrors = {};
         tempErrors.firstName = employee.firstName ? "" : "First name is required";
@@ -35,11 +40,14 @@ function EmployeeForm() {
             tempErrors.zipCode = zipCodeRegex.test(employee.zipCode) ? "" : "Zip code is invalid";
         }
         setErrors(tempErrors);
-        return Object.values(tempErrors).every(x => x === ""); // returns true if all values in tempErrors are empty strings, meaning there are no errors
+        return Object.values(tempErrors).every(x => x === ""); // returns true only if all values in tempErrors are empty strings, meaning there are no errors
     };
 
+    //Get the employee list from the context
+    //is used to update the employee list after a new employee is added
     const { employees, setEmployees } = useEmployees();
 
+    //When the form is correct, the employee object is sent to the database and the employee list is updated
     const saveEmployee = async () => {
         if (validate()) {
             try {
@@ -54,10 +62,10 @@ function EmployeeForm() {
         }
     };
 
-
-
+    // Updates the employee object as the user types in the form
     const handleChange = (e) => {
         const { id, value } = e.target;
+        //take the previous state and merge it with the new state 
         setEmployee(prevState => ({
             ...prevState,
             [id]: value

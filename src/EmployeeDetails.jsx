@@ -1,6 +1,6 @@
 import React from 'react';
 import ManageIcon from '/src/assets/manage-icon.svg';
-import dataOperations from './EmployeeService';
+import dataOperations from './services/EmployeeService';
 import { useContext } from 'react';
 import { EmployeeContext } from './EmployeeContext';
 

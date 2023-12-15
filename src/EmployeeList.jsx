@@ -20,6 +20,7 @@ function EmployeeList() {
         { title: 'Department', key: 'department' },
     ];
 
+    //Event handler for row click to display employee details on click
     const handleRowClick = (employee) => {
         setSelectedEmployee(employee);
     }
@@ -31,10 +32,11 @@ function EmployeeList() {
                     <img src={ListIcon} alt="List Icon" className="list-icon" />
                     <h2>Current Employees</h2>
                 </div>
+                {/* React DataTable npm package */}
                 <ReactDataTable
                     data={employees}
                     columns={columns}
-                    onRowClick={handleRowClick}
+                    onRowClick={handleRowClick}//Prop to handle row click with function
                     defaultEntriesPerPage={10}
                     headerHeight="3rem"
                     tableBodyHeight="20rem"
@@ -42,6 +44,7 @@ function EmployeeList() {
                     fontFamily="'Roboto', sans-serif"
                 />
             </div>
+            {/* Display employee details if selected */}
             {selectedEmployee && <EmployeeDetails employee={selectedEmployee} />}
             {!selectedEmployee && <EmployeeDetails />}
         </div>
